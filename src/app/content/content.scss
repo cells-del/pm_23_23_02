@@ -1,0 +1,25 @@
+.save-btn {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+
+  &:hover {
+    background-color: #e55a00;
+  }
+}
+
+$main-color: #292526;
+$accent-color: #ff5a2f;
+$bg-orange: #ff6600;
+$line-color: #dcdcdc;
+
+.content-pad {
+  padding-left: clamp(10px, 3vw, 40px);
+  padding-right: clamp(10px, 3vw, 40px);
+  padding-bottom: clamp(20px, 5vw, 35px);
+}

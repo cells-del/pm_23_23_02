@@ -1,0 +1,45 @@
+$accent: #ff6600;
+$text-dark: #333333;
+
+@mixin size($w, $h) {
+  width: $w;
+  height: $h;
+}
+@mixin text($size, $color: $text-dark, $weight: 400) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+.text-8 {
+  @include text(22px, $accent, 700);
+  text-transform: uppercase;
+  margin-top: 33px;
+}
+
+.contacts-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+  margin-left: 35px;
+}
+
+.location-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.contact-label {
+  font-weight: 500;
+}
+
+.bg-3 {
+  @include size(22px, 20px);
+  margin-top: 3px;
+  font-size: 13px;
+  background-color: $accent;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+.head-pd {
+  padding-left: 110px;
+  padding-top: 30px;
+  padding-bottom: 60px;
+
+  @media (max-width: 900px) { padding-left: 40px; }
+  @media (max-width: 600px) { padding-left: 20px; }
+}

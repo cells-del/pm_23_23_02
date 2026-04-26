@@ -1,0 +1,40 @@
+.loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 20px;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  color: red;
+  font-size: 16px;
+  background: #fff0f0;
+  border: 1px solid red;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+$container-bg: #fff;
+$shadow-dark: rgba(0, 0, 0, 0.25);
+$shadow-light: rgba(0, 0, 0, 0.12);
+$border-color: rgba(0, 0, 0, 0.05);
+$radius: 5px;
+$max-width: 1100px;
+
+@mixin shadow($color1, $color2) {
+  box-shadow:
+    0 30px 60px $color1,
+    0 10px 22px $color2;
+}
+
+.resume-wrapper {
+  background: $container-bg;
+  border-radius: $radius;
+  @include shadow($shadow-dark, $shadow-light);
+  border: 1px solid $border-color;
+  max-width: $max-width;
+  margin: 40px auto;
+  width: 80%;
+}

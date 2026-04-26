@@ -1,0 +1,15 @@
+<div class="content-pad">
+  <div class="row px-0">
+    <div class="col-4 px-0">
+      <app-education
+        [educations]="educations"
+        (accordionToggled)="onAccordionToggled($event)"
+      />
+    </div>
+    <div class="col-7 px-0" style="margin-left: 40px">
+      <app-experience
+        [experiences]="experiences"
+      />
+    </div>
+  </div>
+</div>

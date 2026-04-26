@@ -1,0 +1,120 @@
+{
+  "firstName": "Johc",
+  "lastName": "Doe",
+  "middleName": "A.",
+  "subtitle": [
+    "And",
+    "I",
+    "am",
+    "A",
+    "Graphic",
+    "Designer"
+  ],
+  "aboutText1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "aboutText2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "contacts": [
+    {
+      "icon": "fa-phone",
+      "label": "+4-756-822-556",
+      "type": "phone"
+    },
+    {
+      "icon": "fa-globe",
+      "label": "www.yourwebsite.com",
+      "type": "circle"
+    },
+    {
+      "icon": "fa-location-dot",
+      "label": "1173 Valley Street",
+      "type": "circle"
+    }
+  ],
+  "educations": [
+    {
+      "title": "MASTER OF CREATIVE ARTS",
+      "place": "University Name",
+      "date": "2018 - Present",
+      "description": "Lorem ipsum dolor sit amet."
+    },
+    {
+      "title": "MASTER OF DESIGN",
+      "place": "University Name",
+      "date": "2015 - 2017",
+      "description": "Lorem ipsum dolor sit amet."
+    },
+    {
+      "title": "MARKETING OFFICER",
+      "place": "University Name",
+      "date": "2010 - 2012",
+      "description": "Lorem ipsum dolor sit amet."
+    }
+  ],
+  "experiences": [
+    {
+      "title": "WEB DESIGNER",
+      "date": "2018 - Present",
+      "company": "Company Name / Location",
+      "description": "Lorem ipsum dolor sit amet."
+    },
+    {
+      "title": "GRAPHIC DESIGNER",
+      "date": "2015 - 2018",
+      "company": "Company Name / Location",
+      "description": "Lorem ipsum dolor sit amet."
+    },
+    {
+      "title": "MARKETING MANAGER",
+      "date": "2010 - 2015",
+      "company": "Company Name / Location",
+      "description": "Lorem ipsum dolor sit amet."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Graphic Designing",
+      "value": 85
+    },
+    {
+      "name": "Web Designing",
+      "value": 70
+    },
+    {
+      "name": "Microsoft Word",
+      "value": 60
+    },
+    {
+      "name": "Affinity Designer",
+      "value": 75
+    },
+    {
+      "name": "MS Powerpoint",
+      "value": 50
+    },
+    {
+      "name": "Corel | Draw",
+      "value": 65
+    }
+  ],
+  "languages": [
+    {
+      "first": "Spanish",
+      "second": "French",
+      "percent": 65
+    },
+    {
+      "first": "German",
+      "second": "Japanese",
+      "percent": 70
+    },
+    {
+      "first": "English",
+      "second": "Portuguese",
+      "percent": 85
+    },
+    {
+      "first": "Persian",
+      "second": "Quechua",
+      "percent": 68
+    }
+  ]
+}

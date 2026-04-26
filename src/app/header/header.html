@@ -1,0 +1,12 @@
+<div class="head-pd">
+  <app-header-profile
+    [firstName]="firstName"
+    [lastName]="lastName"
+    [middleName]="middleName"
+    [subtitle]="subtitle"
+    [aboutText1]="aboutText1"
+    [aboutText2]="aboutText2"
+    (saveName)="onSaveName($event)"
+  />
+  <app-contact [contacts]="contacts" />
+</div>

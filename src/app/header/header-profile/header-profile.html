@@ -1,0 +1,42 @@
+<div class="row px-0 align-items-center">
+  <div class="col-4 px-0">
+    <img src="img.png" alt="photo" class="img" />
+  </div>
+
+  <div class="col-7 px-0">
+    <div class="left-line"></div>
+    <div style="margin-left: 40px">
+
+      <div class="name-row">
+        <span class="text-hello">{{ greeting }}</span>
+        <span class="text-intro">{{ intro }}</span>
+        @if (isEditing) {
+          <input [(ngModel)]="editFirstName" placeholder="Імʼя" />
+          <input [(ngModel)]="editLastName" placeholder="Прізвище" />
+          <button (click)="saveEdit()">💾</button>
+          <button (click)="cancelEdit()">✖</button>
+        } @else {
+          <span class="text-4">{{ firstName }} {{ lastName }}</span>
+          <button class="btn-edit" (click)="startEdit()">✏️</button>
+        }
+      </div>
+
+      <div class="text-5">
+        @for (word of subtitle; track word) {
+          <span>{{ word }}</span>
+        }
+      </div>
+
+      <div style="display: flex; gap: 15px; margin-bottom: 20px">
+        <div class="bg-2">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <span class="text-7">ABOUT ME</span>
+      </div>
+
+      <div class="text-6">{{ aboutText1 }}</div>
+      <div class="text-6">{{ aboutText2 }}</div>
+
+    </div>
+  </div>
+</div>

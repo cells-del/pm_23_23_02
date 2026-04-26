@@ -1,0 +1,54 @@
+$text-dark: #333333;
+$accent: #ff6600;
+
+@mixin size($w, $h) {
+  width: $w;
+  height: $h;
+}
+@mixin text($size, $color: $text-dark, $weight: 400) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+.skills-pad {
+  padding-left: 40px;
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px 30px;
+  width: 100%;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  span {
+    @include text(15px, $text-dark, 500);
+  }
+}
+
+.skill input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  @include size(100%, 10px);
+  background: #d3d3d3;
+  outline: none;
+  overflow: hidden;
+
+  &::-webkit-slider-runnable-track {
+    background: #d3d3d3;
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 0;
+    height: 0;
+    box-shadow: -200px 0 0 200px $accent;
+  }
+}

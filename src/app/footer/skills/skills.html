@@ -1,0 +1,10 @@
+<div class="skills-pad">
+  <div class="skills">
+    @for (skill of skills; track skill.name) {
+      <div class="skill">
+        <span>{{ skill.name }}</span>
+        <input type="range" [value]="skill.value" min="0" max="100" disabled />
+      </div>
+    }
+  </div>
+</div>

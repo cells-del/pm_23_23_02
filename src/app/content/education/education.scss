@@ -1,0 +1,123 @@
+$main-color: #292526;
+$accent-color: #ff5a2f;
+$bg-orange: #ff6600;
+$line-color: #dcdcdc;
+$laptop: 992px;
+$tablet: 768px;
+$mobile: 480px;
+
+@mixin circle($size, $bg, $color: white, $fs: 22px) {
+  width: $size;
+  height: $size;
+  background: $bg;
+  color: $color;
+  font-size: $fs;
+  border-radius: 50%;
+  text-align: center;
+}
+
+@mixin text-style($size, $weight: 400, $color: $main-color, $ls: 0) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  letter-spacing: $ls;
+}
+
+@mixin transition($prop, $time: 0.3s) {
+  transition: #{$prop} #{$time} ease;
+}
+
+.text-1 {
+  @include text-style(clamp(16px, 2.8vw, 22px), 700);
+  text-transform: uppercase;
+}
+
+.bg {
+  @include circle(clamp(30px, 5vw, 38px), $bg-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline {
+  position: relative;
+  padding-left: clamp(15px, 3vw, 30px);
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 8px;
+    width: 3px;
+    height: 74%;
+    background: $line-color;
+  }
+}
+
+.item {
+  position: relative;
+  margin-bottom: clamp(25px, 5vw, 45px);
+  padding-right: 10px;
+  &::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    left: clamp(-25px, -3vw, -15px);
+    background: $accent-color;
+    position: absolute;
+    top: 8px;
+  }
+}
+
+.title {
+  @include text-style(clamp(16px, 3vw, 18px), 700);
+  width: 100%;
+}
+
+.place {
+  @include text-style(clamp(12px, 2.5vw, 14px), 500, $main-color, 1px);
+  margin-bottom: clamp(10px, 3vw, 25px);
+  span {
+    @include text-style(clamp(11px, 2.2vw, 13px), 500);
+    margin-left: 6px;
+  }
+}
+
+.text {
+  @include text-style(clamp(14px, 3vw, 17px), 400);
+  line-height: 1.3;
+}
+
+.arrow {
+  margin-top: 10px;
+  font-size: clamp(14px, 2.8vw, 16px);
+  @include transition(transform);
+  &.open {
+    transform: rotate(90deg);
+  }
+}
+
+.accordion-content {
+  margin-top: 50px;
+  max-height: 0;
+  overflow: hidden;
+  @include transition(max-height, 0.35s);
+  &.open {
+    max-height: 2000px;
+  }
+}
+
+@media (max-width: $laptop) {
+  .timeline::before { left: 1px; }
+  .item::before { left: -30px; }
+}
+
+@media (max-width: $tablet) {
+  .timeline { padding-left: 25px; }
+  .item::before { left: -22px; }
+}
+
+@media (max-width: $mobile) {
+  .timeline { padding-left: 15px; }
+  .item::before { left: -16px; }
+}

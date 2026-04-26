@@ -1,0 +1,25 @@
+<div class="language-pad">
+  <div class="lang-names">
+    @for (lang of languages; track lang.first) {
+      <div class="language-name">
+        <div>{{ lang.first }}</div>
+        <div>&</div>
+        <div>{{ lang.second }}</div>
+      </div>
+    }
+  </div>
+
+  <div class="lang-circles">
+    @for (lang of languages; track lang.first) {
+      <div class="circle-wrapper">
+        <div class="circle">
+          <svg>
+            <circle cx="33" cy="33" r="30"></circle>
+            <circle cx="33" cy="33" r="30" [style.--percent]="lang.percent"></circle>
+          </svg>
+          <div class="value">{{ lang.percent }}%</div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

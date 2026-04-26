@@ -1,0 +1,106 @@
+$accent: #ff6600;
+$text-dark: #333333;
+$text-mid: #282828;
+$line: #d9d9d9;
+
+@mixin size($w, $h) {
+  width: $w;
+  height: $h;
+}
+@mixin text($size, $color: $text-dark, $weight: 400) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+.img {
+  margin-top: 20px;
+  @include size(300px, 340px);
+  object-fit: cover;
+
+  @media (max-width: 600px) {
+    @include size(200px, 260px);
+  }
+}
+
+.left-line {
+  position: absolute;
+  top: 90px;
+  @include size(2px, 340px);
+  background: $line;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    @include size(22px, 3px);
+    background: $line;
+  }
+  &::before {
+    top: 20px;
+    box-shadow: 0 90px 0 $line;
+  }
+  &::after {
+    top: 185px;
+    box-shadow: 0 100px 0 $line;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.name-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.text-hello {
+  @include text(50px, $text-dark, 900);
+}
+
+.text-intro {
+  @include text(50px, $text-dark, 400);
+}
+
+.text-4 {
+  @include text(50px, $accent, 700);
+}
+
+.text-5 {
+  display: flex;
+  gap: 8px;
+  margin-top: -10px;
+  @include text(16px, $text-dark, 400);
+  letter-spacing: 5px;
+  margin-bottom: 25px;
+
+  @media (max-width: 600px) {
+    font-size: 13px;
+    letter-spacing: 3px;
+  }
+}
+
+.text-6 {
+  @include text(15px, $text-mid, 400);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.text-7 {
+  @include text(20px, $text-dark, 900);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.bg-2 {
+  @include size(25px, 25px);
+  background-color: $accent;
+  color: white;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 25px;
+}
