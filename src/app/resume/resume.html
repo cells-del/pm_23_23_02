@@ -1,0 +1,36 @@
+@if (isLoading) {
+  <div class="loading">Завантаження...</div>
+}
+
+@if (errorMessage) {
+  <div class="error">{{ errorMessage }}</div>
+}
+
+@if (resumeData) {
+  <div class="resume-wrapper">
+    <div class="logout-bar">
+      <button class="logout-btn" (click)="logout()">
+        <span>⏻</span> Вийти
+      </button>
+    </div>
+
+    <app-header
+      [firstName]="resumeData.firstName"
+      [lastName]="resumeData.lastName"
+      [middleName]="resumeData.middleName"
+      [subtitle]="resumeData.subtitle"
+      [aboutText1]="resumeData.aboutText1"
+      [aboutText2]="resumeData.aboutText2"
+      [contacts]="resumeData.contacts"
+      (saveName)="onSaveData($event)"
+    />
+    <app-content
+      [educations]="resumeData.educations"
+      [experiences]="resumeData.experiences"
+    />
+    <app-footer
+      [skills]="resumeData.skills"
+      [languages]="resumeData.languages"
+    />
+  </div>
+}

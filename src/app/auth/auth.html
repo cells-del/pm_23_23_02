@@ -1,0 +1,221 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-brand">
+      <span class="brand-icon">◈</span>
+      <span class="brand-text">CV Studio</span>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="tab-btn" [class.active]="mode === 'login'" (click)="switchMode('login')">
+        Вхід
+      </button>
+      <button class="tab-btn" [class.active]="mode === 'register'" (click)="switchMode('register')">
+        Реєстрація
+      </button>
+      <div class="tab-indicator" [class.right]="mode === 'register'"></div>
+    </div>
+
+    <!-- ── ALERT MESSAGES ── -->
+    @if (errorMessage) {
+      <div class="alert alert-error">
+        <span class="alert-icon">✕</span> {{ errorMessage }}
+      </div>
+    }
+    @if (successMessage) {
+      <div class="alert alert-success">
+        <span class="alert-icon">✓</span> {{ successMessage }}
+      </div>
+    }
+
+    <!-- ═══════════════════════════════════════════════
+         LOGIN FORM (шаблонна форма — лаб №4 вимога)
+    ════════════════════════════════════════════════ -->
+    @if (mode === 'login') {
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="auth-form" novalidate>
+        <h2 class="form-title">Ласкаво просимо</h2>
+        <p class="form-sub">Увійдіть до свого облікового запису</p>
+
+        <div class="field-group">
+          <label class="field-label" for="login-email">Email</label>
+          <div class="input-wrap" [class.invalid]="getLoginField('email').invalid && getLoginField('email').touched">
+            <span class="input-icon">@</span>
+            <input
+              id="login-email"
+              type="email"
+              class="field-input"
+              formControlName="email"
+              placeholder="your@email.com"
+              autocomplete="email"
+            />
+          </div>
+          @if (getLoginField('email').touched && getLoginField('email').hasError('required')) {
+            <span class="field-error">Email обовʼязковий</span>
+          }
+          @if (getLoginField('email').touched && getLoginField('email').hasError('email')) {
+            <span class="field-error">Некоректний формат email</span>
+          }
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="login-password">Пароль</label>
+          <div class="input-wrap" [class.invalid]="getLoginField('password').invalid && getLoginField('password').touched">
+            <span class="input-icon">⚿</span>
+            <input
+              id="login-password"
+              type="password"
+              class="field-input"
+              formControlName="password"
+              placeholder="Мінімум 6 символів"
+              autocomplete="current-password"
+            />
+          </div>
+          @if (getLoginField('password').touched && getLoginField('password').hasError('required')) {
+            <span class="field-error">Пароль обовʼязковий</span>
+          }
+          @if (getLoginField('password').touched && getLoginField('password').hasError('minlength')) {
+            <span class="field-error">Мінімум 6 символів</span>
+          }
+        </div>
+
+        <button type="submit" class="submit-btn" [class.loading]="isLoading" [disabled]="isLoading">
+          @if (isLoading) { <span class="spinner"></span> } @else { Увійти }
+        </button>
+
+        <p class="switch-hint">
+          Ще немає акаунту?
+          <button type="button" class="link-btn" (click)="switchMode('register')">Зареєструватись</button>
+        </p>
+      </form>
+    }
+
+    <!-- ══════════════════════════════════════════════
+         REGISTER FORM (реактивна форма — лаб №4)
+    ══════════════════════════════════════════════ -->
+    @if (mode === 'register') {
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="auth-form" novalidate>
+        <h2 class="form-title">Створити акаунт</h2>
+        <p class="form-sub">Заповніть форму для реєстрації</p>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="reg-first">Імʼя</label>
+            <div class="input-wrap" [class.invalid]="getRegField('firstName').invalid && getRegField('firstName').touched">
+              <input
+                id="reg-first"
+                type="text"
+                class="field-input"
+                formControlName="firstName"
+                placeholder="Іван"
+              />
+            </div>
+            @if (getRegField('firstName').touched && getRegField('firstName').hasError('required')) {
+              <span class="field-error">Обовʼязкове поле</span>
+            }
+            @if (getRegField('firstName').touched && getRegField('firstName').hasError('minlength')) {
+              <span class="field-error">Мінімум 2 символи</span>
+            }
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="reg-last">Прізвище</label>
+            <div class="input-wrap" [class.invalid]="getRegField('lastName').invalid && getRegField('lastName').touched">
+              <input
+                id="reg-last"
+                type="text"
+                class="field-input"
+                formControlName="lastName"
+                placeholder="Петренко"
+              />
+            </div>
+            @if (getRegField('lastName').touched && getRegField('lastName').hasError('required')) {
+              <span class="field-error">Обовʼязкове поле</span>
+            }
+            @if (getRegField('lastName').touched && getRegField('lastName').hasError('minlength')) {
+              <span class="field-error">Мінімум 2 символи</span>
+            }
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="reg-email">Email</label>
+          <div class="input-wrap" [class.invalid]="getRegField('email').invalid && getRegField('email').touched">
+            <span class="input-icon">@</span>
+            <input
+              id="reg-email"
+              type="email"
+              class="field-input"
+              formControlName="email"
+              placeholder="your@email.com"
+              autocomplete="email"
+            />
+          </div>
+          @if (getRegField('email').touched && getRegField('email').hasError('required')) {
+            <span class="field-error">Email обовʼязковий</span>
+          }
+          @if (getRegField('email').touched && getRegField('email').hasError('email')) {
+            <span class="field-error">Некоректний формат email</span>
+          }
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="reg-pass">Пароль</label>
+          <div class="input-wrap" [class.invalid]="getRegField('password').invalid && getRegField('password').touched">
+            <span class="input-icon">⚿</span>
+            <input
+              id="reg-pass"
+              type="password"
+              class="field-input"
+              formControlName="password"
+              placeholder="Мінімум 6 символів"
+              autocomplete="new-password"
+            />
+          </div>
+          @if (getRegField('password').touched && getRegField('password').hasError('required')) {
+            <span class="field-error">Пароль обовʼязковий</span>
+          }
+          @if (getRegField('password').touched && getRegField('password').hasError('minlength')) {
+            <span class="field-error">Мінімум 6 символів</span>
+          }
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="reg-confirm">Підтвердити пароль</label>
+          <div class="input-wrap"
+               [class.invalid]="(getRegField('confirmPassword').touched && getRegField('confirmPassword').hasError('required')) || (registerForm.hasError('passwordMismatch') && getRegField('confirmPassword').touched)">
+            <span class="input-icon">⚿</span>
+            <input
+              id="reg-confirm"
+              type="password"
+              class="field-input"
+              formControlName="confirmPassword"
+              placeholder="Повторіть пароль"
+              autocomplete="new-password"
+            />
+          </div>
+          @if (getRegField('confirmPassword').touched && getRegField('confirmPassword').hasError('required')) {
+            <span class="field-error">Підтвердження обовʼязкове</span>
+          }
+          @if (registerForm.hasError('passwordMismatch') && getRegField('confirmPassword').touched) {
+            <span class="field-error">Паролі не співпадають</span>
+          }
+        </div>
+
+        <button type="submit" class="submit-btn" [class.loading]="isLoading" [disabled]="isLoading">
+          @if (isLoading) { <span class="spinner"></span> } @else { Зареєструватись }
+        </button>
+
+        <p class="switch-hint">
+          Вже є акаунт?
+          <button type="button" class="link-btn" (click)="switchMode('login')">Увійти</button>
+        </p>
+      </form>
+    }
+
+  </div>
+
+  <!-- Decorative background shapes -->
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  <div class="bg-shape shape-3"></div>
+</div>

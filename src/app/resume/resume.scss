@@ -1,0 +1,83 @@
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+}
+
+.error {
+  color: #e05c5c;
+}
+
+.resume-wrapper {
+  position: relative;
+}
+
+.logout-bar {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background-color 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.25);
+
+  &:hover {
+    background-color: #e55a00;
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 20px;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  color: red;
+  font-size: 16px;
+  background: #fff0f0;
+  border: 1px solid red;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+$container-bg: #fff;
+$shadow-dark: rgba(0, 0, 0, 0.25);
+$shadow-light: rgba(0, 0, 0, 0.12);
+$border-color: rgba(0, 0, 0, 0.05);
+$radius: 5px;
+$max-width: 1100px;
+
+@mixin shadow($color1, $color2) {
+  box-shadow:
+    0 30px 60px $color1,
+    0 10px 22px $color2;
+}
+
+.resume-wrapper {
+  background: $container-bg;
+  border-radius: $radius;
+  @include shadow($shadow-dark, $shadow-light);
+  border: 1px solid $border-color;
+  max-width: $max-width;
+  margin: 40px auto;
+  width: 80%;
+}
+

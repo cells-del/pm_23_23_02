@@ -1,0 +1,315 @@
+// ── Project palette (matches existing styles) ─────────────────────────────────
+$bg-light:     #f0f0f0;
+$bg-white:     #ffffff;
+$text-dark:    #333333;
+$text-muted:   #888888;
+$main-color:   #292526;
+$accent-color: #ff5a2f;
+$bg-orange:    #ff6600;
+$line-color:   #dcdcdc;
+$error:        #e05c5c;
+$success:      #4caf7d;
+
+// ── Mixins (same as project) ───────────────────────────────────────────────────
+@mixin flex($gap: 0) {
+  display: flex;
+  gap: $gap;
+}
+
+@mixin text($size, $color: $text-dark, $weight: 400) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+// ── Page shell ────────────────────────────────────────────────────────────────
+.auth-page {
+  min-height: 100vh;
+  background: $bg-light;
+  @include flex(0);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  font-family: inherit;
+}
+
+// ── Card ─────────────────────────────────────────────────────────────────────
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  background: $bg-white;
+  border: 1px solid $line-color;
+  border-radius: 4px;
+  padding: 40px 36px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+// ── Brand ─────────────────────────────────────────────────────────────────────
+.auth-brand {
+  @include flex(10px);
+  align-items: center;
+  margin-bottom: 28px;
+  border-bottom: 5px solid $bg-light;
+  padding-bottom: 20px;
+
+  .brand-icon {
+    font-size: 20px;
+    color: $accent-color;
+  }
+
+  .brand-text {
+    @include text(16px, $main-color, 700);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
+.auth-tabs {
+  @include flex(0);
+  position: relative;
+  background: $bg-light;
+  border-radius: 2px;
+  padding: 4px;
+  margin-bottom: 24px;
+  border: 1px solid $line-color;
+}
+
+.tab-btn {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  background: none;
+  border: none;
+  @include text(14px, $text-muted, 400);
+  padding: 9px;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-family: inherit;
+
+  &.active {
+    @include text(14px, $text-dark, 600);
+  }
+}
+
+.tab-indicator {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: $bg-white;
+  border: 1px solid $line-color;
+  border-radius: 2px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+
+  &.right {
+    transform: translateX(calc(100%));
+  }
+}
+
+// ── Alerts ────────────────────────────────────────────────────────────────────
+.alert {
+  @include flex(8px);
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 4px;
+  @include text(13px);
+  margin-bottom: 16px;
+
+  &.alert-error {
+    background: rgba($error, 0.08);
+    border: 1px solid rgba($error, 0.25);
+    color: $error;
+  }
+
+  &.alert-success {
+    background: rgba($success, 0.08);
+    border: 1px solid rgba($success, 0.25);
+    color: $success;
+  }
+
+  .alert-icon {
+    font-size: 11px;
+    font-weight: bold;
+  }
+}
+
+// ── Form ─────────────────────────────────────────────────────────────────────
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form-title {
+  @include text(22px, $main-color, 700);
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-sub {
+  @include text(13px, $text-muted);
+  margin: 0 0 24px;
+}
+
+// ── Field row (first/last name side-by-side) ──────────────────────────────────
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+// ── Fields ────────────────────────────────────────────────────────────────────
+.field-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.field-label {
+  @include text(11px, $text-muted, 600);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.input-wrap {
+  @include flex(0);
+  align-items: center;
+  background: $bg-white;
+  border: 1px solid $line-color;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+
+  &:focus-within {
+    border-color: $accent-color;
+  }
+
+  &.invalid {
+    border-color: $error;
+  }
+
+  .input-icon {
+    padding: 0 12px;
+    @include text(14px, $text-muted);
+    user-select: none;
+  }
+}
+
+.field-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 11px 12px 11px 0;
+  @include text(14px, $text-dark);
+  font-family: inherit;
+
+  &::placeholder {
+    color: #bbbbbb;
+  }
+
+  &:first-child {
+    padding-left: 12px;
+  }
+}
+
+.field-error {
+  @include text(11px, $error);
+  margin-top: 4px;
+  padding-left: 2px;
+}
+
+// ── Submit button (matches .save-btn style from project) ──────────────────────
+.submit-btn {
+  margin-top: 8px;
+  padding: 11px;
+  background-color: $bg-orange;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  @include text(15px, white, 600);
+  font-family: inherit;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  transition: background-color 0.2s;
+
+  &:hover:not(:disabled) {
+    background-color: #e55a00;
+  }
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+}
+
+// ── Spinner ───────────────────────────────────────────────────────────────────
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// ── Switch hint ───────────────────────────────────────────────────────────────
+.switch-hint {
+  text-align: center;
+  @include text(13px, $text-muted);
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: $accent-color;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+
+  &:hover {
+    color: darken($accent-color, 10%);
+  }
+}
+
+// ── Decorative shapes — subtle in light theme ─────────────────────────────────
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.06;
+}
+.shape-1 {
+  width: 400px; height: 400px;
+  background: $accent-color;
+  top: -100px; right: -80px;
+}
+.shape-2 {
+  width: 250px; height: 250px;
+  background: $main-color;
+  bottom: -60px; left: -50px;
+}
+.shape-3 {
+  width: 150px; height: 150px;
+  background: $accent-color;
+  bottom: 15%; right: 8%;
+}
